@@ -3,6 +3,7 @@ get_weather tool."""
 
 import asyncio
 import os
+import sys
 
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
@@ -11,7 +12,7 @@ SERVER_SCRIPT = os.path.join(os.path.dirname(__file__), "weather_server.py")
 
 
 async def _get_weather_async(city: str) -> str:
-    server_params = StdioServerParameters(command="python", args=[SERVER_SCRIPT])
+    server_params = StdioServerParameters(command=sys.executable, args=[SERVER_SCRIPT])
 
     async with stdio_client(server_params) as (read, write):
         async with ClientSession(read, write) as session:
