@@ -1,0 +1,7 @@
+streamlit
+openai
+chromadb
+mcp[cli]<2
+requests
+psycopg2-binary
+python-dotenv
